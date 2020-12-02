@@ -92,11 +92,10 @@ class InferenceConfig(balloon.BalloonConfig):
 ##################### Start Code ########################
 
 infer_config = InferenceConfig()
-# infer_config.display()
 
-dir_name = '/SSD/hackathon_test/snapshots/logs'
-video_input_path = '/SSD/hackathon_test/resize_video.mov'
-video_output_path = '/SSD/hackathon_test/result_video.mp4'
+dir_name = '/SSD/hackathon/data/snapshots/logs'
+video_input_path = '/SSD/hackathon/data/data_validation/resize_video.mov'
+video_output_path = '/SSD/hackathon/data/data_validation/result_video.mp4'
 
 model = modellib.MaskRCNN(mode="inference", model_dir=dir_name, config=infer_config)
 # 마지막 스냅샷 지점 불러오기
