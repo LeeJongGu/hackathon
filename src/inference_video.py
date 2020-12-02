@@ -91,22 +91,22 @@ class InferenceConfig(balloon.BalloonConfig):
 
 ##################### Start Code ########################
 
-infer_config = InferenceConfig()
+# infer_config = InferenceConfig()
 
-dir_name = '/SSD/hackathon/data/snapshots/logs'
-video_input_path = '/SSD/hackathon/data/data_validation/resize_video.mov'
-video_output_path = '/SSD/hackathon/data/data_validation/result_video.mp4'
+# dir_name = '/SSD/hackathon/data/snapshots/logs'
+# video_input_path = '/SSD/hackathon/data/data_validation/resize_video.mov'
+# video_output_path = '/SSD/hackathon/data/data_validation/result_video.mp4'
 
-model = modellib.MaskRCNN(mode="inference", model_dir=dir_name, config=infer_config)
-# 마지막 스냅샷 지점 불러오기
-weights_path = model.find_last()
-print('model path:', weights_path)
-# 지정된 weight 파일명으로 모델에 로딩. 
-model.load_weights(weights_path, by_name=True)
+# model = modellib.MaskRCNN(mode="inference", model_dir=dir_name, config=infer_config)
+# # 마지막 스냅샷 지점 불러오기
+# weights_path = model.find_last()
+# print('model path:', weights_path)
+# # 지정된 weight 파일명으로 모델에 로딩. 
+# model.load_weights(weights_path, by_name=True)
 
-test_stamp = time.time()
-detect_video_color_splash(model, video_input_path=video_input_path, video_output_path=video_output_path)
-print("소요시간 : ", time.time() - test_stamp)
+# test_stamp = time.time()
+# detect_video_color_splash(model, video_input_path=video_input_path, video_output_path=video_output_path)
+# print("소요시간 : ", time.time() - test_stamp)
 
 
 
