@@ -17,7 +17,8 @@ import time
 # from skimage.measure import find_contours
 
 
-def color_splash(image, mask):
+def color_splash(image, mask, points, scores):
+# def color_splash(image, mask):
 
     gray = skimage.color.gray2rgb(skimage.color.rgb2gray(image)) * 255
     # Copy color pixels from the original color image where mask is set
@@ -38,6 +39,15 @@ def color_splash(image, mask):
         temp_image[:,:,1] = 200
 
         splash = np.where(mask, temp_image, image).astype(np.uint8)
+
+        if len(points) != 0:
+            for i,j in zip(points, scores):
+    
+                title = 'cavity : ' + str(j)
+                point = (i[0], i[1])
+    
+                cv2.putText(splash, title, point, cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 1, cv2.LINE_AA)
+
         # splash = np.where(mask, image[::[50]], image).astype(np.uint8)
         # splash = np.where(mask, image.100, image).astype(np.uint8)
     else:
@@ -74,7 +84,14 @@ def detect_video_color_splash(model, video_input_path=None, video_output_path=No
         print('detected time:', time.time()-start)
 
         # 실제로 마스킹 되는 부분
-        splash = color_splash(image_frame, r['masks'])
+        points = r['rois'] 
+        print(points)
+
+        scores = r['scores']
+        print(scores)
+
+        splash = color_splash(image_frame, r['masks'], points, scores)
+        # splash = color_splash(image_frame, r['masks'])
         vid_writer.write(splash)
     
     vid_writer.release()
