@@ -35,7 +35,7 @@ import numpy as np
 import skimage.draw
 
 # Root directory of the project
-ROOT_DIR = os.path.abspath("/SSD/hackathon_test")
+ROOT_DIR = os.path.abspath("/SSD/hackathon")
 
 # Import Mask RCNN
 sys.path.append(ROOT_DIR)  # To find local version of the library
@@ -44,11 +44,11 @@ from mrcnn import model as modellib, utils
 
 # Path to trained weights file
 # COCO_WEIGHTS_PATH = os.path.join(ROOT_DIR, "mask_rcnn_coco.h5")
-COCO_WEIGHTS_PATH = os.path.join("/SSD/hackathon_test/pretrained", "mask_rcnn_coco.h5")
+COCO_WEIGHTS_PATH = os.path.join("/SSD/hackathon/data/pretrained", "mask_rcnn_coco.h5")
 
 # Directory to save logs and model checkpoints, if not provided
 # through the command line argument --logs
-DEFAULT_LOGS_DIR = os.path.join("/SSD/hackathon_test/snapshots", "logs")
+DEFAULT_LOGS_DIR = os.path.join("/SSD/hackathon/data/snapshots", "logs")
 
 ############################################################
 #  Configurations
@@ -204,7 +204,7 @@ def train(model):
     print("Training network heads")
     model.train(dataset_train, dataset_val,
                 learning_rate=config.LEARNING_RATE,
-                epochs=30,
+                epochs=800,
                 layers='heads')
 
 
