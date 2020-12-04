@@ -17,7 +17,7 @@ import time
 # from skimage.measure import find_contours
 
 
-def color_splash(image, mask, points, scores):
+def color_splash(image, mask, points=None, scores=None):
 # def color_splash(image, mask):
 
     gray = skimage.color.gray2rgb(skimage.color.rgb2gray(image)) * 255
@@ -44,9 +44,11 @@ def color_splash(image, mask, points, scores):
             for i,j in zip(points, scores):
     
                 title = 'cavity : ' + str(j)
-                point = (i[0], i[1])
-    
-                cv2.putText(splash, title, point, cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 1, cv2.LINE_AA)
+                point01 = (i[0], i[1])
+                point02 = (i[2], i[3])
+
+                # cv2.rectangle(splash, point01, point02,(255, 0, 0), thickness=1)
+                # cv2.putText(splash, title, point01, cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 1, cv2.LINE_AA)
 
         # splash = np.where(mask, image[::[50]], image).astype(np.uint8)
         # splash = np.where(mask, image.100, image).astype(np.uint8)

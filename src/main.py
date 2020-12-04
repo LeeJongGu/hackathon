@@ -5,8 +5,8 @@ import time
 infer_config = inf.InferenceConfig()
 
 dir_name = '/SSD/hackathon/data/snapshots/logs'
-video_input_path = '/SSD/hackathon/data/data_validation/resize_video.mov'
-video_output_path = '/SSD/hackathon/data/data_validation/result_video.mp4'
+video_input_path = '/SSD/hackathon/data/data_validation/short_test.mov'
+video_output_path = '/SSD/hackathon/data/data_validation/result.mp4'
 
 model = modellib.MaskRCNN(mode="inference", model_dir=dir_name, config=infer_config)
 # 마지막 스냅샷 지점 불러오기
